@@ -6,7 +6,7 @@
   <table st-table="orders" class="tables">
     <thead>
     <tr>
-      <th class="tables__heading tables__heading--sortable" st-sort="product_name">Services</th>
+      <th class="tables__heading orders-list__count">Services</th>
       <th class="tables__heading tables__heading--sortable orders-list__staff" st-sort="staff">Placed By</th>
       <th class="tables__heading tables__heading--sortable orders-list__cost" st-sort="total">Monthly Cost</th>
       <th class="tables__heading tables__heading--sortable orders-list__status">Status</th>
@@ -16,9 +16,7 @@
     </thead>
     <tbody>
     <tr class="selectRow" ng-repeat="row in orders">
-      <td class="tables__cell">
-        {{ ::row.services.length }}
-      </td>
+      <td class="tables__cell">{{ ::row.services.length }}</td>
       <td class="tables__cell">{{ ::row.staff }}</td>
       <td class="tables__cell">{{ ::row.total | currency }}</td>
       <td class="tables__cell"><status type="{{ ::row.status }}">{{ ::row.status }}</status></td>

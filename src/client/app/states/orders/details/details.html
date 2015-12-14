@@ -44,7 +44,6 @@
   </div>
 </details-table>
 
-
 <details-table heading="Service: {{ ::service.name}}" ng-repeat="(id, service) in vm.order.services track by id">
   <div class="details-table__row">
     <div class="details-table__label">Product</div>
@@ -74,7 +73,7 @@
 
   <div class="details-table__row">
     <div class="details-table__label">Creation Date</div>
-    <div class="details-table__detail">{{ :: service.created_at | date:'medium' }}</div>
+    <div class="details-table__detail">{{ ::service.created_at | date:'medium' }}</div>
   </div>
 
   <div class="details-table__row">
