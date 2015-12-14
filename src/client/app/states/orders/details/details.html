@@ -5,8 +5,10 @@
 <details-table heading="Order Details">
   <div class="details-table__row">
     <div class="details-table__label">Project</div>
-    <project-description project="vm.project"
-                         link-to="projects.details({projectId: vm.project.id})"></project-description>
+    <div class="details-table__detail">
+      <project-description project="vm.project"
+                           link-to="projects.details({projectId: vm.project.id})"></project-description>
+    </div>
   </div>
 
   <div class="details-table__row">
@@ -46,7 +48,9 @@
 <details-table heading="Service: {{ ::service.name}}" ng-repeat="(id, service) in vm.order.services track by id">
   <div class="details-table__row">
     <div class="details-table__label">Product</div>
-    <product-description product="service.product"></product-description>
+    <div class="details-table__detail">
+      <product-description product="service.product"></product-description>
+    </div>
   </div>
 
   <div class="details-table__row">
