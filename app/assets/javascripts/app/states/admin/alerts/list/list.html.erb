@@ -31,7 +31,7 @@
             <td class="alerts-table__cell alerts-table__cell--question">{{ ::row.end_date | date:'short' }}</td>
             <td class="alerts-table__cell alerts-table__cell--actions">
                 <a ui-sref="admin.alerts.edit({id: row.id})" class="alerts-table__action alerts-table__action--edit">
-                    <img src="/frontend/ic_edit.png" alt="Edit"/>
+                    <%= image_tag 'ic_edit.png', alt: 'Edit' %>
                 </a>
                 <a href="#" class="alerts-table__action alerts-table__action--delete"
                    confirmation
@@ -41,7 +41,7 @@
                    confirmation-ok-text="Yes, Delete It"
                    confirmation-on-ok="vm.deleteAlert(row)"
                    confirmation-show-cancel="false">
-                    <img src="/frontend/ic_deletequestion.png" alt="Delete"/>
+                  <%= image_tag 'ic_deletequestion.png', alt: 'Delete' %>
                 </a>
             </td>
         </tr>

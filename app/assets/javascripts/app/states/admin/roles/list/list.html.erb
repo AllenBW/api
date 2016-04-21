@@ -29,7 +29,7 @@
       <td class="roles-table__cell roles-table__cell--permissions" ng-bind-html="vm.permissionsList(row.permissions)"></td>
       <td class="roles-table__cell roles-table__cell--actions">
         <a ui-sref="admin.roles.edit({roleId: row.id})" class="roles-table__action roles-table__action--edit">
-          <img src="/frontend/ic_edit.png" alt="Edit"/>
+          <%= image_tag 'ic_edit.png', alt: 'Edit' %>
         </a>
         <a href="#" class="roles-table__action roles-table__action--delete"
            confirmation
@@ -39,7 +39,7 @@
            confirmation-ok-text="Yes, Delete It"
            confirmation-on-ok="vm.deleteRole($index)"
            confirmation-show-cancel="false">
-          <img src="/frontend/ic_deletequestion.png" alt="Delete"/>
+          <%= image_tag 'ic_deletequestion.png', alt: 'Delete' %>
         </a>
       </td>
     </tr>

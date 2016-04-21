@@ -13,7 +13,7 @@
     <td class="wizard-questions-table__cell wizard-questions-table__cell--actions">
       <a ui-sref="manage.wizard-questions.edit({questionId: row.id})"
          class="wizard-questions-table__action wizard-questions-table__action--edit" title="Edit">
-        <img src="/frontend/ic_edit.png" alt="Edit"/>
+        <%= image_tag 'ic_edit.png', alt: 'Edit' %>
       </a>
       <!--<img class="wizard-questions-table__action wizard-questions-table__action&#45;&#45;sort wizard-questions-table__handle"-->
       <!--src="/frontend/ic_sort.png" title="Sort" alt="Sort"/>-->
@@ -25,7 +25,7 @@
          confirmation-ok-text="Yes, Delete It"
          confirmation-on-ok="vm.deleteQuestion($index)"
          confirmation-show-cancel="false">
-        <img src="/frontend/ic_deletequestion.png" alt="Delete"/>
+        <%= image_tag 'ic_deletequestion.png', alt: 'Delete' %>
       </a>
     </td>
   </tr>

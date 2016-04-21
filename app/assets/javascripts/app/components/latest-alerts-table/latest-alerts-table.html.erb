@@ -28,7 +28,7 @@
     <td class="latest-alerts-table__cell latest-alerts-table__cell--actions">
 
       <a ui-sref="projects.alerts.edit({projectId: row.alertable_id, id: row.id})" class="latest-alerts-table__cell">
-        <img src="/frontend/ic_edit.png" alt="Edit"/>
+        <%= image_tag 'ic_edit.png', alt: 'Edit' %>
       </a>
 
       <a href="#" class="latest-alerts-table__cell"
@@ -39,7 +39,7 @@
          confirmation-ok-text="Yes, Delete It"
          confirmation-on-ok="vm.deleteAlert(row)"
          confirmation-show-cancel="false">
-        <img src="/frontend/ic_deletequestion.png" alt="Delete"/>
+        <%= image_tag 'ic_deletequestion.png', alt: 'Delete' %>
       </a>
 
     </td>

@@ -86,17 +86,15 @@
             <computed-monthly-price pricing="line.product"></computed-monthly-price>
           </td>
           <td class="tables__cell tables__cell--centered">
-
-            <img ng-if="line.service.name" src="/frontend/ic_required.png" alt="Project Configured"/>
-
+            <img ng-if="line.service.name" src="<%= image_url 'ic_required.png' %>" alt="Project Configured"/>
           </td>
           <td class="tables__cell tables__cell--actions">
             <a class="tables__action" href="#" title="Remove" ng-click="vm.remove($index)">
-              <img src="/frontend/ic_deletequestion.png" alt="Remove"/>
+              <%= image_tag 'ic_deletequestion.png', alt: 'Remove' %>
             </a>
             <a class="tables__action" href="#" title="Configure"
                ng-click="vm.configure($index, line)">
-              <img src="/frontend/ic_config.png" alt="Configure"/>
+              <%= image_tag 'ic_config.png', alt: 'Configure' %>
             </a>
           </td>
         </tr>

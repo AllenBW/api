@@ -28,7 +28,7 @@
         <td class="project-questions-table__cell project-questions-table__cell--actions">
           <a ui-sref="manage.project-questions.edit({projectQuestionId: row.id})"
              class="project-questions-table__action project-questions-table__action--edit" title="Edit">
-            <img src="/frontend/ic_edit.png" alt="Edit"/>
+            <%= image_tag 'ic_edit.png', alt: 'Edit' %>
           </a>
           <img
             class="project-questions-table__action project-questions-table__action--sort project-questions-table__handle"
@@ -41,7 +41,7 @@
              confirmation-ok-text="Yes, Delete It"
              confirmation-on-ok="vm.deleteQuestion($index)"
              confirmation-show-cancel="false">
-            <img src="/frontend/ic_deletequestion.png" alt="Delete"/>
+            <%= image_tag 'ic_deletequestion.png', alt: 'Delete' %>
           </a>
         </td>
       </tr>

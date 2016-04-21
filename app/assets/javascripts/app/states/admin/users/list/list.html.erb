@@ -23,7 +23,7 @@
     <td class="tables__cell tables__cell--role">{{ ::row.role }}</td>
     <td class="tables__cell tables__cell--actions">
       <a ui-sref="admin.users.edit({id: row.id})" class="tables__action">
-        <img src="/frontend/ic_edit.png" alt="Edit"/>
+        <%= image_tag 'ic_edit.png', alt: 'Edit' %>
       </a>
       <a href="#" class="tables__action tables__action--delete"
          confirmation
@@ -33,7 +33,7 @@
          confirmation-ok-text="Yes, Delete It"
          confirmation-on-ok="vm.deleteUser($index)"
          confirmation-show-cancel="false">
-        <img src="/frontend/ic_deletequestion.png" alt="Delete"/>
+        <%= image_tag 'ic_deletequestion.png', alt: 'Delete' %>
       </a>
     </td>
   </tr>

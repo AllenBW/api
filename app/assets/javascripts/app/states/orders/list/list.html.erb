@@ -25,7 +25,7 @@
       <td class="tables__cell">{{ ::row.created_at | date:'short' }}</td>
       <td class="tables__cell tables__cell--actions">
         <a ui-sref="orders.details({orderId: row.id})" class="tables__action">
-          <img src="/frontend/ic_info.png" alt="Details" title="Details"/>
+          <%= image_tag 'ic_info.png', alt: 'Details' %>
         </a>
       </td>
     </tr>

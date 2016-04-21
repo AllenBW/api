@@ -65,7 +65,7 @@
           <div class="group-field__member" ng-repeat="staff in vm.members track by staff.id">
             {{ ::staff.full_name }}
             <a href="#" ng-click="vm.removeMember(staff.id)" class="group-field__member-remove" title="Remove Member">
-              <img src="/frontend/ic_deletequestion.png" alt="Remove Member"/>
+              <%= image_tag 'ic_deletequestion.png', alt: 'Delete' %>
             </a>
           </div>
         </div>

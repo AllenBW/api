@@ -21,7 +21,7 @@
       <td class="tables__cell tables__cell--actions">
         <a ng-if="vm.archivedProject()" href="#" ng-click="vm.showModal(row)" class="tables__action"
            title="Edit">
-          <img src="/frontend/ic_edit.png" alt="Edit"/>
+          <%= image_tag 'ic_edit.png', alt: 'Edit' %>
         </a>
         <a ng-if="vm.readOnly()" href="#" class="tables__action" title="Delete"
            confirmation
@@ -31,7 +31,7 @@
            confirmation-ok-text="Yes, Delete It"
            confirmation-on-ok="vm.remove(row)"
            confirmation-show-cancel="false">
-          <img src="/frontend/ic_deletequestion.png" alt="Delete"/>
+          <%= image_tag 'ic_deletequestion.png', alt: 'Delete' %>
         </a>
       </td>
     </tr>

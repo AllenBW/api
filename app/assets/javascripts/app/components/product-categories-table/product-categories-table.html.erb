@@ -13,7 +13,7 @@
     <td class="product-categories-table__cell product-categories-table__cell--actions">
       <a ui-sref="manage.product-categories.edit({productCategoryId: row.id})"
          class="product-categories-table__action product-categories-table__action--edit" title="Edit">
-        <img src="/frontend/ic_edit.png" alt="Edit"/>
+        <%= image_tag 'ic_edit.png', alt: 'Edit' %>
       </a>
       <a href="#" class="product-categories-table__action product-categories-table__action--delete" title="Delete"
          confirmation
@@ -23,7 +23,7 @@
          confirmation-ok-text="Yes, Delete It"
          confirmation-on-ok="vm.deleteCategory($index)"
          confirmation-show-cancel="false">
-        <img src="/frontend/ic_deletequestion.png" alt="Delete"/>
+        <%= image_tag 'ic_deletequestion.png', alt: 'Delete' %>
       </a>
     </td>
   </tr>
