@@ -5,7 +5,7 @@
         <img class="selected-products__image" ng-src="/frontend/assets/{{vm.products[index].img}}" alt="vm.products[index].description"/>
       </div>
       <div ng-if="!vm.products[index].img">
-        <img class="selected-products__image" ng-src="/frontend/jelly_alone.png" alt="Jellyfish Logo"/>
+        <img class="selected-products__image" src="<%= image_url 'jelly_alone.png' %>" alt="Jellyfish Logo"/>
       </div>
       <a href="#" title="Remove" class="selected-products__remove" ng-click="vm.remove(vm.products[index])">
         <%= image_tag 'ic_closecompare.png', alt: 'Close' %>

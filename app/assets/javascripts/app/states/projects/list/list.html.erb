@@ -30,9 +30,9 @@
       <project-description project="row" link-to="projects.details({projectId: {{row.id}}})"></project-description>
     </td>
     <td class="tables__cell tables__cell--centered">
-      <img ng-if="::'approved' === row.status" src="/frontend/ic_required.png" alt="Approved"
+      <img ng-if="::'approved' === row.status" src="<%= image_url 'ic_required.png' %>" alt="Approved"
            title="Project is approved"/>
-      <img ng-if="::'rejected' === row.status" src="/frontend/ic_deletequestion.png" alt="Rejected"
+      <img ng-if="::'rejected' === row.status" src="<%= image_url 'ic_deletequestion.png' %>" alt="Rejected"
            title="Project is rejected"/>
     </td>
     <td class="tables__cell tables__cell--centered">
@@ -67,9 +67,9 @@
           <project-description project="row" link-to="projects.details({projectId: {{row.id}}})"></project-description>
         </td>
         <td class="tables__cell tables__cell--centered">
-          <img ng-if="::'approved' === row.status" src="/frontend/ic_required.png" alt="Approved"
+          <img ng-if="::'approved' === row.status" src="<%= image_url 'ic_required.png' %>" alt="Approved"
                title="Project is approved"/>
-          <img ng-if="::'rejected' === row.status" src="/frontend/ic_deletequestion.png" alt="Rejected"
+          <img ng-if="::'rejected' === row.status" src="<%= image_url 'ic_deletequestion.png' %>" alt="Rejected"
                title="Project is rejected"/>
         </td>
         <td class="tables__cell tables__cell--centered">

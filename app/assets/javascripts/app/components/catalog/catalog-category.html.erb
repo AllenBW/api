@@ -2,7 +2,7 @@
   <div class="catalog-category__header">
     <span class="catalog-category__title">{{ ::vm.category.name }}</span>
     <a href="#" title="Collapse">
-      <img class="catalog-category__collapse-icon" src="/frontend/ic_viewcategory_dropdown.png"
+      <img class="catalog-category__collapse-icon" src="<%= image_url 'ic_viewcategory_dropdown.png' %>"
            ng-click="vm.collapsed = !vm.collapsed" alt="Collapse">
     </a>
   </div>

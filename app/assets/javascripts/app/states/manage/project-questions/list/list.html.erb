@@ -22,7 +22,7 @@
         <td class="project-questions-table__cell project-questions-table__cell--order">{{ $index+1 }}</td>
         <td class="project-questions-table__cell project-questions-table__cell--question">{{ ::row.question }}</td>
         <td class="project-questions-table__cell project-questions-table__cell--required">
-          <img ng-if="::row.required" class="project-questions-table__required" src="/frontend/ic_required.png"
+          <img ng-if="::row.required" class="project-questions-table__required" src="<%= image_url 'ic_required.png' %>"
                alt="Required" title="Question is required"/>
         </td>
         <td class="project-questions-table__cell project-questions-table__cell--actions">
@@ -32,7 +32,7 @@
           </a>
           <img
             class="project-questions-table__action project-questions-table__action--sort project-questions-table__handle"
-            src="/frontend/ic_sort.png" title="Sort" alt="Sort"/>
+            src="<%= image_url 'ic_sort.png' %>" title="Sort" alt="Sort"/>
           <a href="#" class="project-questions-table__action project-questions-table__action--delete" title="Delete"
              confirmation
              confirmation-position="left-center"

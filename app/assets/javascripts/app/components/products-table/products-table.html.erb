@@ -21,7 +21,7 @@
     </td>
     <td class="tables__cell">{{ ::row.product_type }}</td>
     <td class="tables__cell tables__cell--centered">
-      <img ng-if="::row.active" src="/frontend/ic_required.png" alt="Active" title="Active"/>
+      <img ng-if="::row.active" src="<%= image_url 'ic_required.png' %>" alt="Active" title="Active"/>
     </td>
     <td class="tables__cell tables__cell--actions">
       <a ui-sref="manage.products.edit({productId: row.id})" class="tables__action">

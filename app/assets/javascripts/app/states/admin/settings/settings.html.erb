@@ -20,7 +20,7 @@
       <td ng-if="::row.value_type == 'password'" class="tables__cell">&mdash; <em>hidden</em> &mdash;</td>
       <td ng-if="::row.value_type != 'password'" class="tables__cell">{{ row.value }}</td>
       <td class="tables__cell tables__cell--actions">
-        <img ng-click="vm.edit(row)" class="tables__action" src="/frontend/ic_edit.png" alt="Edit"/>
+        <img ng-click="vm.edit(row)" class="tables__action" src="<%= image_url 'ic_edit.png' %>" alt="Edit"/>
       </td>
     </tr>
     </tbody>
