@@ -1,6 +1,11 @@
 <div class="project-description">
   <div ng-if="::!vm.project.img" class="project-description__image project-description__image--missing"></div>
-  <img ng-if="::vm.project.img" class="project-description__image" ng-src="/frontend/assets/{{ ::vm.project.img }}" alt="Product Icon"/>
+  <img ng-if="::vm.project.name == 'Cloud Prototype'" class="project-description__image"
+       src="<%= image_url 'cloud-checkmark-128.png' %>" alt="Project Icon"/>
+  <img ng-if="::vm.project.name == 'Internal Wiki'" class="project-description__image"
+       src="<%= image_url 'documentation.png' %>" alt="Project Icon"/>
+  <img ng-if="::vm.project.name == 'Mobile API'" class="project-description__image"
+       src="<%= image_url 'icon-mobile-orange.png' %>" alt="Project Icon"/>
   <a ui-sref="{{ ::vm.linkTo }}">{{ ::vm.project.name }}</a>
   <span ng-if="::vm.project.description" class="project-description__description">
     &mdash; {{ ::vm.project.description }}
