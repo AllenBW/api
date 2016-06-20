@@ -1,21 +1,30 @@
+---
 version: '2'
 services:
-  web:
-    container_name: jellyfish_app
-    build:
-      context: .
-      dockerfile: Dockerfile
-    ports:
-      - "3000:3000"
-    depends_on:
-      - db
+  worker:
+    extends:
+      service: common
     links:
-      - db
+    - redis
+    - db
+    depends_on:
+    - redis
+    - db
+    command: bundle exec rake jobs:work
+  common:
+    build: "."
     environment:
-      - RACK_ENV=docker
-      - RAILS_ENV=docker
-      - DEVISE_SECRET_KEY=978e423d107dc2277f2987787a2f8ccd5ee0dcedf40f05f0188d732516a79559a7434feb56f35f31376f1b12325ac28ea540c8387fba83cb070e43af271ff9e9
-      - SECRET_KEY_BASE=c7a71de57183e6e8aefede7737332c6283ce85a061a779fd761eac14c011255b6fd151d8cb3dd7403404b0f248f01bf4cfb97a17ec72b9ff3c5d1bd1ca3d72b2
+      DATABASE_URL: postgres://postgres:yX634jPgRnJk4fyVfKH2cg@db:5432/postgres
+      RACK_ENV: production
+  app:
+    extends:
+      service: common
+    command: bundle exec puma -C config/puma.rb
+    links:
+    - db
+    ports:
+    - 3000:3000
   db:
-    container_name: codelift_db
     image: postgres
+    environment:
+      POSTGRES_PASSWORD: yX634jPgRnJk4fyVfKH2cg

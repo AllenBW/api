@@ -1,0 +1,78 @@
+{
+  "container_definitions": [
+    {
+      "name": "worker",
+      "image": "",
+      "links": [
+        "redis",
+        "db"
+      ],
+      "command": [
+        "bundle",
+        "exec",
+        "rake",
+        "jobs:work"
+      ],
+      "environment": [
+        {
+          "name": "DATABASE_URL",
+          "value": "postgres://postgres:yX634jPgRnJk4fyVfKH2cg@db:5432/postgres"
+        },
+        {
+          "name": "RACK_ENV",
+          "value": "production"
+        }
+      ]
+    },
+    {
+      "name": "app",
+      "image": "",
+      "environment": [
+        {
+          "name": "DATABASE_URL",
+          "value": "postgres://postgres:yX634jPgRnJk4fyVfKH2cg@db:5432/postgres"
+        },
+        {
+          "name": "RACK_ENV",
+          "value": "production"
+        }
+      ],
+      "links": [
+        "db"
+      ],
+      "command": [
+        "bundle",
+        "exec",
+        "rails",
+        "s",
+        "-b",
+        "0.0.0.0"
+      ],
+      "port_mappings": [
+        {
+          "protocol": "tcp",
+          "container_port": 3000,
+          "host_port": 0
+        }
+      ]
+    },
+    {
+      "name": "db",
+      "image": "postgres",
+      "port_mappings": [
+        {
+          "protocol": "tcp",
+          "container_port": 5432,
+          "host_port": 0
+        }
+      ],
+      "environment": [
+        {
+          "name": "POSTGRES_PASSWORD",
+          "value": "yX634jPgRnJk4fyVfKH2cg"
+        }
+      ]
+    }
+  ],
+  "family": "AllenBWapi"
+}
