@@ -1,36 +1,27 @@
-FROM ruby:2.3.0
-RUN apt-get update -qq && apt-get install -y build-essential libpq-dev
-RUN curl -sL https://deb.nodesource.com/setup_4.x | bash -
-RUN apt-get install -y nodejs
+FROM ubuntu
 
-RUN mkdir /api
-WORKDIR /api
+RUN apt-get update -qq && DEBIAN_FRONTEND=noninteractive apt-get -q -y install libpq-dev build-essential curl git zlib1g-dev libssl-dev libreadline-dev libyaml-dev libxml2-dev libxslt-dev libsqlite3-dev nodejs-legacy nodejs-dev npm
 
-ENV RACK_ENV=docker
-ENV RAILS_ENV=docker
-ENV DEVISE_SECRET_KEY=978e423d107dc2277f2987787a2f8ccd5ee0dcedf40f05f0188d732516a79559a7434feb56f35f31376f1b12325ac28ea540c8387fba83cb070e43af271ff9e9
-ENV SECRET_KEY_BASE=c7a71de57183e6e8aefede7737332c6283ce85a061a779fd761eac14c011255b6fd151d8cb3dd7403404b0f248f01bf4cfb97a17ec72b9ff3c5d1bd1ca3d72b2
+ENV DEVISE_SECRET_KEY="028eedbf57a4905bbd3ff721f88c75c3f9cd948ad313e955ceabf102615fa24eb2c55ade1f61aa9050edace0e8d1b1fddfe6b94288b9172181692714a1bda77c" \
+    RAILS_ENV="production" \
+    SECRET_KEY_BASE="$(openssl rand -base64 32)" \
+    RUBY_VERSION="2.3.0" \
+    CONFIGURE_OPTS="--disable-install-doc" \
+    PATH="/root/.rbenv/bin:/root/.rbenv/shims:$PATH"
 
-# If you are not using Docker compose, you need to set your database connection info here
-# ENV DATABASE_URL=postgres://user:pass@hostname:5432/database_name
-
-COPY Gemfile /api/
-COPY Gemfile.lock /api/
-
-COPY . /api/
-
-RUN npm install -g gulp bower
-RUN npm install gulp bower
-
-RUN bundle install --without development test
-RUN npm install --production
-RUN bower install --allow-root --config.interactive=false
-RUN gulp build --production
-
-# Note: Don't forget you have to run the migrations manually, by SSH'ing 
-# into the web server and running the following:
-# rake db:migrate && rake db:seed && rake sample:demo
+RUN git clone https://github.com/sstephenson/rbenv.git ~/.rbenv \
+    && git clone https://github.com/sstephenson/ruby-build.git ~/.rbenv/plugins/ruby-build \
+    && ~/.rbenv/plugins/ruby-build/install.sh \
+    && echo 'eval "$(rbenv init -)"' >> ~/.bashrc \
+    && rbenv install $RUBY_VERSION \
+    && rbenv global $RUBY_VERSION \
+    && echo "gem: --no-ri --no-rdoc" > ~/.gemrc \
+    && gem install bundler
+RUN mkdir -p /app
+WORKDIR /app
+COPY Gemfile* /app/
+RUN bundle install --without development test --jobs 4
+COPY . /app/
+RUN bundle exec rake assets:precompile
 
 EXPOSE 3000
-
-CMD bundle exec rails s -p 3000 -b '0.0.0.0'

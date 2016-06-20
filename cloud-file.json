@@ -1,0 +1,85 @@
+{
+  "services": [
+    {
+      "name": "worker",
+      "image": "",
+      "linked_to_service": [
+        {
+          "name": "redis",
+          "to_service": "redis"
+        },
+        {
+          "name": "db",
+          "to_service": "db"
+        }
+      ],
+      "run_command": "bundle exec rake jobs:work",
+      "autoredeploy": true,
+      "target_num_containers": 1,
+      "sequential_deployment": true,
+      "container_envvars": [
+        {
+          "key": "DATABASE_URL",
+          "value": "postgres://postgres:yX634jPgRnJk4fyVfKH2cg@db:5432/postgres"
+        },
+        {
+          "key": "RACK_ENV",
+          "value": "production"
+        }
+      ]
+    },
+    {
+      "name": "app",
+      "image": "",
+      "target_num_containers": 1,
+      "sequential_deployment": true,
+      "autorestart": "ALWAYS",
+      "autoredeploy": true,
+      "container_envvars": [
+        {
+          "key": "DATABASE_URL",
+          "value": "postgres://postgres:yX634jPgRnJk4fyVfKH2cg@db:5432/postgres"
+        },
+        {
+          "key": "RACK_ENV",
+          "value": "production"
+        }
+      ],
+      "linked_to_service": [
+        {
+          "name": "db",
+          "to_service": "db"
+        }
+      ],
+      "run_command": "bash -c \"rake db:migrate && rails s -b 0.0.0.0\"",
+      "container_ports": [
+        {
+          "protocol": "tcp",
+          "inner_port": 3000,
+          "published": true,
+          "outer_port": 6319
+        }
+      ]
+    },
+    {
+      "name": "db",
+      "image": "postgres",
+      "target_num_containers": 1,
+      "sequential_deployment": true,
+      "container_ports": [
+        {
+          "protocol": "tcp",
+          "inner_port": 5432,
+          "published": true
+        }
+      ],
+      "container_envvars": [
+        {
+          "key": "POSTGRES_PASSWORD",
+          "value": "yX634jPgRnJk4fyVfKH2cg"
+        }
+      ]
+    }
+  ],
+  "name": "AllenBWapi"
+}
